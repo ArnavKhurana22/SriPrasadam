@@ -1,0 +1,179 @@
+.wrap h1 {
+  margin-bottom: 12px;
+}
+
+.pickFirst {
+  margin-top: 24px;
+  max-width: 520px;
+}
+
+.layout {
+  margin-top: 34px;
+  display: grid;
+  gap: 26px;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.terms {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
+.summary {
+  position: static;
+}
+
+.summaryCard {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summaryHead {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.summaryHead img {
+  border-radius: 50%;
+  background: var(--surface-alt);
+  flex-shrink: 0;
+}
+
+.summaryHead .eyebrow {
+  margin-bottom: 2px;
+}
+
+.summaryTitle {
+  font-size: 1.2rem;
+}
+
+.eventChip {
+  align-self: flex-start;
+}
+
+.summaryList {
+  margin: 0;
+  display: grid;
+  gap: 11px;
+  padding-top: 4px;
+  border-top: 1px solid var(--line);
+}
+
+.summaryList > div {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.summaryList dt {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
+.summaryList dd {
+  margin: 0;
+  font-size: 0.89rem;
+  color: var(--ink);
+}
+
+.total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.total span {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.total strong {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--accent-deep);
+}
+
+.changeBtn {
+  margin-top: -6px;
+  font-size: 0.86rem;
+}
+
+/* ---------- confirmation ---------- */
+
+.confirmWrap {
+  background: linear-gradient(180deg, var(--wash), transparent);
+}
+
+.confirmCard {
+  max-width: 640px;
+  margin-inline: auto;
+  padding: 34px 26px 30px;
+  text-align: center;
+}
+
+.confirmCard .lede {
+  margin-inline: auto;
+}
+
+.tickMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--wash);
+  color: var(--brand-deep);
+  font-size: 1.5rem;
+  margin-bottom: 18px;
+  border: 1px solid rgba(135, 168, 120, 0.4);
+}
+
+.refLine {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+
+.refLine strong {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+
+.confirmActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1.55fr) minmax(300px, 1fr);
+    gap: 40px;
+  }
+  .summary {
+    position: sticky;
+    top: 96px;
+  }
+  .confirmCard {
+    padding: 46px 44px 40px;
+  }
+}

@@ -1,0 +1,81 @@
+.wrap h1 {
+  margin-bottom: 12px;
+}
+
+.layout {
+  margin-top: 34px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+.info {
+  display: grid;
+  gap: 14px;
+}
+
+.infoCard {
+  padding: 20px;
+}
+
+.infoCard h2 {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 10px;
+}
+
+.infoCard p {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+}
+
+.infoCard p:last-of-type {
+  margin-bottom: 0;
+}
+
+.phone {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: 1.34rem;
+  color: var(--ink);
+  text-decoration: none;
+  margin-bottom: 6px;
+}
+
+.phone:hover {
+  color: var(--brand-deep);
+}
+
+.infoActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.form {
+  padding: 22px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form h2 {
+  font-size: 1.2rem;
+}
+
+.form :global(.btn) {
+  align-self: flex-start;
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 30px;
+  }
+}

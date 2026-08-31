@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# SriPrasadam
+.env
+server/data/
+*.db
+*.db-wal
+*.db-shm

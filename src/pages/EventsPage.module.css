@@ -1,0 +1,121 @@
+.intro {
+  padding-bottom: 0;
+  background: linear-gradient(180deg, var(--wash), transparent);
+}
+
+.intro h1 {
+  margin-bottom: 12px;
+}
+
+.list {
+  padding-top: 34px;
+}
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+.card {
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cardHead img {
+  border-radius: 50%;
+  background: var(--surface-alt);
+  flex-shrink: 0;
+}
+
+.date {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+}
+
+.name {
+  font-size: 1.16rem;
+  margin-top: 2px;
+}
+
+.deity {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-muted);
+}
+
+.body {
+  margin: 0;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.card :global(.btn) {
+  margin-top: 6px;
+}
+
+.past {
+  margin-top: 52px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.past h2 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+
+.pastList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.pastList li {
+  display: flex;
+  gap: 16px;
+  font-size: 0.9rem;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.pastDate {
+  color: var(--ink-muted);
+  min-width: 140px;
+}
+
+.note {
+  margin-top: 34px;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+@media (min-width: 660px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1020px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

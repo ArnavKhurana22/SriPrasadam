@@ -1,0 +1,136 @@
+.intro {
+  padding-bottom: 0;
+  background: linear-gradient(180deg, var(--wash), transparent);
+}
+
+.intro h1 {
+  margin-bottom: 14px;
+}
+
+.searchRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 26px;
+  flex-wrap: wrap;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 280px;
+  max-width: 460px;
+  padding: 0 14px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--ink-muted);
+}
+
+.search:focus-within {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(135, 168, 120, 0.16);
+}
+
+.search input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  padding: 12px 0;
+  font-size: 0.94rem;
+  outline: none;
+  color: var(--ink);
+  min-width: 0;
+}
+
+.search input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.count {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-muted);
+}
+
+.gridSection {
+  padding-top: 32px;
+}
+
+.slabSection h2 {
+  margin-bottom: 10px;
+}
+
+.slabList {
+  list-style: none;
+  margin: 30px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+
+.slabCard {
+  padding: 20px 20px 22px;
+}
+
+.slabCard h3 {
+  font-size: 1.02rem;
+  margin-bottom: 12px;
+}
+
+.slabPrice {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent-deep);
+  margin: 0 0 2px;
+}
+
+.itemList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.itemList li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.itemList li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand);
+}
+
+.slabTag {
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
+@media (min-width: 640px) {
+  .slabList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .slabList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
