@@ -18,6 +18,40 @@ npm run dev               # Vite on :5173, API on :5174 (Vite proxies /api)
 
 Open http://localhost:5173. The API creates `server/data/app.db` on first run.
 
+### Viewing on your phone and other devices
+
+Both machines must be on the same Wi-Fi.
+
+**While developing** — the easiest option, since the OTP still appears on screen:
+
+```bash
+npm run dev:host
+```
+
+Vite prints a `Network:` line such as `http://192.168.1.5:5173/`. Open that on the phone. The API
+stays on localhost; Vite forwards `/api` for you, so only the one port matters.
+
+**Production build** — one port serves the site and the API together:
+
+```bash
+npm run serve      # builds, then starts
+```
+
+Set `COOKIE_SECURE=false` in `.env` first. Session cookies are marked `secure` in production, and a
+browser will not store those over a plain `http://192.168.x.x` address, so sign-in silently fails
+without it. Turn it back on (or remove the line) once the site is behind HTTPS.
+
+The server prints its LAN address on startup. Note that in production the login OTP is no longer
+shown on screen — until an SMS provider is connected it only appears in the terminal running the
+server.
+
+If the phone cannot reach the address, allow Node through the firewall — on Windows, tick **Private
+networks** when the prompt appears, or run in an elevated PowerShell:
+
+```powershell
+New-NetFirewallRule -DisplayName "SriPrasadam" -Direction Inbound -LocalPort 5173,5174 -Protocol TCP -Action Allow -Profile Private
+```
+
 ### Environment variables
 
 | Variable | Purpose |
@@ -29,6 +63,8 @@ Open http://localhost:5173. The API creates `server/data/app.db` on first run.
 | `RAZORPAY_KEY_ID` / `RAZORPAY_KEY_SECRET` | Merchant keys. Leave blank for offline mode. |
 | `RAZORPAY_WEBHOOK_SECRET` | Verifies the `payment.captured` webhook. |
 | `VITE_RAZORPAY_KEY_ID` | Same key id, exposed to the browser by Vite. |
+| `COOKIE_SECURE` | `false` when serving over plain HTTP (LAN testing). Defaults to on in production. |
+| `HOST` | Interface the API binds to. Defaults to `0.0.0.0` so other devices can reach it. |
 
 **Offline mode.** With no Razorpay keys, the site still works end to end: bookings are recorded as
 confirmed with `payment_status = offline`, and the confirmation page tells the customer the team
@@ -88,11 +124,13 @@ customer through `notify.ts`.
 
 | Command | Does |
 | --- | --- |
-| `npm run dev` | Vite and the API together |
+| `npm run dev` | Vite and the API together, on localhost |
+| `npm run dev:host` | The same, but reachable from other devices on your network |
 | `npm run build` | Typecheck and build the frontend to `dist/` |
 | `npm run build:check` | Typecheck the frontend and the server |
 | `npm run lint` | ESLint over `src/` and `server/` |
 | `npm start` | Production mode — serves `dist/` from the API on one port |
+| `npm run serve` | `build` followed by `start` |
 
 ## Deploying
 

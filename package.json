@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -n web,api -c cyan,green \"vite\" \"npm:dev:server\"",
+    "dev:host": "concurrently -n web,api -c cyan,green \"vite --host\" \"npm:dev:server\"",
     "dev:server": "tsx watch server/src/index.ts",
     "build": "tsc -b && vite build",
     "build:check": "tsc -b && tsc -p server/tsconfig.json",
-    "start": "NODE_ENV=production tsx server/src/index.ts",
+    "start": "cross-env NODE_ENV=production tsx server/src/index.ts",
+    "serve": "npm run build && npm start",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -40,6 +42,7 @@
     "@vitejs/plugin-react": "^6.1.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "concurrently": "^10.0.5",
+    "cross-env": "^10.1.0",
     "eslint": "^10.9.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.4",

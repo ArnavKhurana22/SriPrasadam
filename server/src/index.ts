@@ -1,4 +1,5 @@
 import 'dotenv/config'
+import { networkInterfaces } from 'node:os'
 import path from 'node:path'
 import cookieParser from 'cookie-parser'
 import express from 'express'
@@ -69,8 +70,23 @@ app.use((err: unknown, _req: express.Request, res: express.Response, _next: expr
 })
 
 const port = Number(process.env.PORT ?? 5174)
-app.listen(port, () => {
+// 0.0.0.0 so phones and other machines on the same network can reach it.
+const host = process.env.HOST ?? '0.0.0.0'
+
+function lanAddresses() {
+  return Object.values(networkInterfaces())
+    .flat()
+    .filter((i) => i !== undefined && i.family === 'IPv4' && !i.internal)
+    .map((i) => i!.address)
+}
+
+app.listen(port, host, () => {
   console.log(`SriPrasadam API listening on http://localhost:${port}`)
+  if (host === '0.0.0.0') {
+    for (const address of lanAddresses()) {
+      console.log(`  on your network: http://${address}:${port}`)
+    }
+  }
   if (!razorpayEnabled) {
     console.log('[razorpay] keys not set — running in offline mode (bookings are created, payment is skipped)')
   }

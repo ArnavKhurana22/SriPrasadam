@@ -15,10 +15,21 @@ export function signAdmin() {
   return jwt.sign({ role: 'admin' }, SECRET, { expiresIn: '12h' })
 }
 
+/**
+ * `secure` cookies are only sent over HTTPS, so they must be off when the site
+ * is served over plain HTTP — a LAN address such as http://192.168.1.5:5174.
+ * Defaults to on in production; set COOKIE_SECURE=false to serve over HTTP.
+ * Always leave it on once the site is behind TLS.
+ */
+const secureCookies =
+  process.env.COOKIE_SECURE !== undefined
+    ? process.env.COOKIE_SECURE === 'true'
+    : process.env.NODE_ENV === 'production'
+
 export const cookieOptions = {
   httpOnly: true,
   sameSite: 'lax' as const,
-  secure: process.env.NODE_ENV === 'production',
+  secure: secureCookies,
   path: '/',
 }
 
